@@ -47,6 +47,16 @@ export async function getDirname(filepath: string): Promise<string> {
   }
 }
 
+export async function isDirectory(filepath: string): Promise<boolean> {
+  try {
+    const lstat = await fs.promises.lstat(filepath);
+
+    return lstat.isDirectory();
+  } catch (catched) {
+    return false;
+  }
+}
+
 export function replaceSepToPosix(targetPath: string): string {
   if (path.sep !== path.posix.sep) {
     const replaced = path.posix.join(...targetPath.split(path.sep));

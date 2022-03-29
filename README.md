@@ -12,5 +12,6 @@ Simple utility functions that can use node.
 | exists | check file or directory exist, return boolean. exactly same depreciated fs.promise.exists funciton |
 | existsSync | check file or directory exist, return boolean. exactly same depreciated fs.existsSync funciton |
 | getDirname | get directory name. If targetPath is already directory return targetPath(not parent directory) |
+| isDirectory | if targetPath is directory, return true |
 | replaceSepToPosix | change sep to posix.sep |
 | replaceSepToWin32 | change sep to win32.sep |

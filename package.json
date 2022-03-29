@@ -1,13 +1,13 @@
 {
   "name": "my-node-fp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simple node programming utility",
   "scripts": {
     "script": "cross-env NODE_ENV=production TS_NODE_PROJECT=tsconfig.json ts-node -r tsconfig-paths/register",
     "lint": "eslint --quiet --ext ts,tsx ./src/*",
     "clean": "rimraf dist artifact",
     "ctix": "ctix create -p tsconfig.json",
-    "ctix:clean": "ctix clean -p tsconfig.json",
+    "ctix:clean": "ctix clean -p tsconfig.json -b",
     "prepub:prod": "npm run ctix && npm run build",
     "pub:prod": "npm publish --access=public",
     "postpub:prod": "ctix clean -p tsconfig.json",
