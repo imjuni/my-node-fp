@@ -13,5 +13,11 @@ Simple utility functions that can use node.
 | existsSync | check file or directory exist, return boolean. exactly same depreciated fs.existsSync funciton |
 | getDirname | get directory name. If targetPath is already directory return targetPath(not parent directory) |
 | isDirectory | if targetPath is directory, return true |
+
+## path
 | replaceSepToPosix | change sep to posix.sep |
 | replaceSepToWin32 | change sep to win32.sep |
+| startSepAppend | starts sep(or you can pass sep character) append if not start sep |
+| endSepAppend | ends sep(or you can pass sep character) append if not end sep |
+| startSepRemove | starts sep(or you can pass sep character) remove if start sep |
+| endSepRemove | ends sep(or you can pass sep character) remove if end sep |

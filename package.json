@@ -1,6 +1,6 @@
 {
   "name": "my-node-fp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Simple node programming utility",
   "scripts": {
     "script": "cross-env NODE_ENV=production TS_NODE_PROJECT=tsconfig.json ts-node -r tsconfig-paths/register",
@@ -10,7 +10,7 @@
     "ctix:clean": "ctix clean -p tsconfig.json -b",
     "prepub:prod": "npm run ctix && npm run build",
     "pub:prod": "npm publish --access=public",
-    "postpub:prod": "ctix clean -p tsconfig.json",
+    "postpub:prod": "ctix clean -p tsconfig.json --includeBackup",
     "build:tsc": "node_modules/.bin/tsc --noemit -p tsconfig.json",
     "prebuild": "npm run clean && npm run ctix",
     "build": "cross-env NODE_ENV=develop npx webpack --config webpack.config.prod.cjs",

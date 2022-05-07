@@ -56,31 +56,3 @@ export async function isDirectory(filepath: string): Promise<boolean> {
     return false;
   }
 }
-
-export function replaceSepToPosix(targetPath: string): string {
-  if (path.sep !== path.posix.sep) {
-    const replaced = path.posix.join(...targetPath.split(path.sep));
-
-    if (targetPath.startsWith(path.sep)) {
-      return `${path.posix.sep}${replaced}`;
-    }
-
-    return replaced;
-  }
-
-  return targetPath;
-}
-
-export function replaceSepToWin32(targetPath: string): string {
-  if (path.sep !== path.win32.sep) {
-    const replaced = path.posix.join(...targetPath.split(path.sep));
-
-    if (targetPath.startsWith(path.sep)) {
-      return `${path.win32.sep}${replaced}`;
-    }
-
-    return replaced;
-  }
-
-  return targetPath;
-}
