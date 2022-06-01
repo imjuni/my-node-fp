@@ -15,6 +15,9 @@ Simple utility functions that can use node.
 | getDirnameSync | get directory name. If targetPath is already directory return targetPath(not parent directory) |
 | isDirectory | if targetPath is directory, return true |
 | isDirectorySync | if targetPath is directory, return true |
+| isEmptyDir | check directory is empty |
+| isEmptyDirSync | check directory is empty |
+| isDescendant | check target directory is descendant of parent directory |
 
 ## path
 | replaceSepToPosix | change sep to posix.sep |
