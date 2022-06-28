@@ -1,4 +1,22 @@
 import * as path from 'path';
+import * as os from 'os';
+
+export function win32DriveLetterUpdown(targetPath: string, type?: 'upper' | 'lower') {
+  if (os.platform() === 'win32') {
+    const matched = /^([a-zA-Z]:)(.+)$/.exec(targetPath.trim());
+
+    if (matched === null || matched === undefined || matched.length < 3) {
+      return targetPath;
+    }
+
+    return path.join(
+      (type ?? 'upper') === 'upper' ? matched[1].toUpperCase() : matched[1].toLowerCase(),
+      matched[2],
+    );
+  }
+
+  return targetPath;
+}
 
 export function replaceSepToPosix(targetPath: string): string {
   if (path.sep !== path.posix.sep) {

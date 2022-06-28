@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { isEmpty } from 'my-easy-fp';
+import { isEmpty, isFalse } from 'my-easy-fp';
 import * as path from 'path';
 
 /**
@@ -37,6 +37,12 @@ export function existsSync(filePath: string): boolean {
  */
 export async function getDirname(filePath: string): Promise<string> {
   try {
+    const filePathExists = await exists(filePath);
+
+    if (isFalse(filePathExists)) {
+      return path.dirname(filePath);
+    }
+
     const lstat = await fs.promises.lstat(filePath);
 
     if (lstat.isDirectory()) {
@@ -65,6 +71,12 @@ export async function getDirname(filePath: string): Promise<string> {
  */
 export function getDirnameSync(filePath: string): string {
   try {
+    const filePathExists = existsSync(filePath);
+
+    if (isFalse(filePathExists)) {
+      return path.dirname(filePath);
+    }
+
     const lstat = fs.lstatSync(filePath);
 
     if (lstat.isDirectory()) {
