@@ -15,7 +15,7 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json',
   },
-  plugins: ['@typescript-eslint', '@typescript-eslint/tslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     '@typescript-eslint/indent': 'off',
     'max-len': ['error', { code: 120 }],

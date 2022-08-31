@@ -4,7 +4,8 @@ import * as path from 'path';
 
 /**
  * check file existing, if file exists return true, don't exists return false
- * @param filePath filename with path
+ *
+ * @param filePath - filename with path
  */
 export async function exists(filePath: string): Promise<boolean> {
   try {
@@ -17,7 +18,7 @@ export async function exists(filePath: string): Promise<boolean> {
 
 /**
  * check file existing, if file exists return true, don't exists return false
- * @param filePath filename with path
+ * @param filePath - filename with path
  */
 export function existsSync(filePath: string): boolean {
   try {
@@ -32,7 +33,7 @@ export function existsSync(filePath: string): boolean {
  * return directory name without filename. If target path is directory name that return same name but
  * target path is file name that return directory name.
  *
- * @param filePath target path
+ * @param filePath - target path
  * @returns directory name
  */
 export async function getDirname(filePath: string): Promise<string> {
@@ -66,7 +67,7 @@ export async function getDirname(filePath: string): Promise<string> {
  *
  * Synchronous version of getDirname
  *
- * @param filePath target path
+ * @param filePath - target path
  * @returns directory name
  */
 export function getDirnameSync(filePath: string): string {
@@ -97,11 +98,17 @@ export function getDirnameSync(filePath: string): string {
 /**
  * check target is directory
  *
- * @param filePath target file path
+ * @param filePath - target file path
  * @returns
  */
 export async function isDirectory(filePath: string): Promise<boolean> {
   try {
+    const filePathExists = await exists(filePath);
+
+    if (isFalse(filePathExists)) {
+      return false;
+    }
+
     const lstat = await fs.promises.lstat(filePath);
 
     return lstat.isDirectory();
@@ -118,6 +125,12 @@ export async function isDirectory(filePath: string): Promise<boolean> {
  */
 export function isDirectorySync(filePath: string): boolean {
   try {
+    const filePathExists = existsSync(filePath);
+
+    if (isFalse(filePathExists)) {
+      return false;
+    }
+
     const lstat = fs.lstatSync(filePath);
 
     return lstat.isDirectory();
@@ -129,9 +142,9 @@ export function isDirectorySync(filePath: string): boolean {
 /**
  * check directory is empty
  *
- * @param filePath target file path
- * @param type  can set directory element type: file only file count, type: directyory: only, not pass count all
- * @returns
+ * @param filePath - target file path
+ * @param type - can set directory element type: file only file count, type: directyory: only, not pass count all
+ * @returns if return true that direcory empty
  */
 export async function isEmptyDir(filePath: string, type?: 'directory' | 'file'): Promise<boolean> {
   try {
@@ -158,7 +171,7 @@ export async function isEmptyDir(filePath: string, type?: 'directory' | 'file'):
 /**
  * check directory is empty synchronous
  *
- * @param filePath target file path
+ * @param filePath - target file path
  * @param type  can set directory element type: file only file count, type: directyory: only, not pass count all
  * @returns if return true that direcory empty
  */
