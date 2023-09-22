@@ -1,6 +1,19 @@
 import * as path from 'path';
 import * as os from 'os';
 
+export function basenames(filename: string, suffix?: string | string[]): string {
+  const base = path.basename(filename);
+
+  if (suffix == null) {
+    return base;
+  }
+
+  const ext = path.extname(filename);
+  const finded = (Array.isArray(suffix) ? suffix : [suffix]).find((s) => s === ext);
+
+  return finded == null ? base : path.basename(filename, ext);
+}
+
 export function win32DriveLetterUpdown(targetPath: string, type?: 'upper' | 'lower') {
   if (os.platform() === 'win32') {
     const matched = /^([a-zA-Z]:)(.+)$/.exec(targetPath.trim());

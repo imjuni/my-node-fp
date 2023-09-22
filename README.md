@@ -1,12 +1,19 @@
-Simple node programming utility
----
+# Simple node programming utility
 
-[![Download Status](https://img.shields.io/npm/dw/my-node-fp.svg)](https://npmcharts.com/compare/my-node-fp?minimal=true) [![Github Star](https://img.shields.io/github/stars/imjuni/my-node-fp.svg?style=popout)](https://github.com/imjuni/my-node-fp) [![Github Issues](https://img.shields.io/github/issues-raw/imjuni/my-node-fp.svg)](https://github.com/imjuni/my-node-fp/issues) [![NPM version](https://img.shields.io/npm/v/my-node-fp.svg)](https://www.npmjs.com/package/my-node-fp) [![License](https://img.shields.io/npm/l/my-node-fp.svg)](https://github.com/imjuni/my-node-fp/blob/master/LICENSE)
+![ts](https://flat.badgen.net/badge/Built%20With/TypeScript/blue)
+[![Download Status](https://img.shields.io/npm/dw/my-node-fp.svg)](https://npmcharts.com/compare/my-node-fp?minimal=true)
+[![Github Star](https://img.shields.io/github/stars/imjuni/my-node-fp.svg?style=popout)](https://github.com/imjuni/my-node-fp)
+[![Github Issues](https://img.shields.io/github/issues-raw/imjuni/my-node-fp.svg)](https://github.com/imjuni/my-node-fp/issues)
+[![NPM version](https://img.shields.io/npm/v/my-node-fp.svg)](https://www.npmjs.com/package/my-node-fp)
+[![License](https://img.shields.io/npm/l/my-node-fp.svg)](https://github.com/imjuni/my-node-fp/blob/master/LICENSE)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-Simple utility functions that can use node. 
+Simple utility functions that can use node.
 
-# Function list
-## fs 
+## Function list
+
+### fs
+
 | name | description |
 | - | - |
 | exists | check file or directory exist, return boolean. exactly same depreciated fs.promise.exists funciton |
@@ -19,7 +26,11 @@ Simple utility functions that can use node.
 | isEmptyDirSync | check directory is empty |
 | isDescendant | check target directory is descendant of parent directory |
 
-## path
+### path
+
+| name | description |
+| - | - |
+| basenames | Return the last portion of a path, suffix can be string, string[] |
 | replaceSepToPosix | change sep to posix.sep |
 | replaceSepToWin32 | change sep to win32.sep |
 | win32DriveLetterUpdown | change win32 drive letter (ex> c:) to upper or lower |
