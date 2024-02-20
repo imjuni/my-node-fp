@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "scripts/uuid.js",
+    "examples/**/*.ts",
+    ".eslintrc.cjs",
+    "vitest.config.ts",
+    "prepublish.js"
+  ],
+  "exclude": ["**/node_modules/**", "**/dist/**/*", "**/.configs/**", "**/docs/**"]
+}
