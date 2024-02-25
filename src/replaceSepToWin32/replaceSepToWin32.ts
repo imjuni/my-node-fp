@@ -8,6 +8,14 @@ export function replaceSepToWin32(targetPath: string): string {
     return targetPath;
   }
 
+  if (targetPath.trim() === '.') {
+    return targetPath.trim();
+  }
+
+  if (targetPath.trim() === '..') {
+    return targetPath.trim();
+  }
+
   if (sep !== path.win32.sep) {
     const replaced = path.win32.join(...targetPath.split(sep));
 

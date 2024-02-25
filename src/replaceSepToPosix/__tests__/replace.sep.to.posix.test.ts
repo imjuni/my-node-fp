@@ -26,14 +26,38 @@ describe('replaceSepToPosix', () => {
       expect(r01).toEqual('/1/2/3/4');
     });
 
-    it('starts with dot', () => {
+    it('single dot', () => {
+      const r01 = replaceSepToPosix('.');
+      expect(r01).toEqual('.');
+    });
+
+    it('double dot', () => {
+      const r01 = replaceSepToPosix('..');
+      expect(r01).toEqual('..');
+    });
+
+    it('starts with dot - 1', () => {
+      const handle = vitest.spyOn(gs, 'getSep').mockImplementationOnce(() => '\\');
+      const r01 = replaceSepToPosix('.\\1');
+      handle.mockRestore();
+      expect(r01).toEqual('./1');
+    });
+
+    it('starts with dot - 2', () => {
       const handle = vitest.spyOn(gs, 'getSep').mockImplementationOnce(() => '\\');
       const r01 = replaceSepToPosix('.\\1\\2\\3\\4');
       handle.mockRestore();
       expect(r01).toEqual('./1/2/3/4');
     });
 
-    it('starts with double dot', () => {
+    it('starts with double dot - 1', () => {
+      const handle = vitest.spyOn(gs, 'getSep').mockImplementationOnce(() => '\\');
+      const r01 = replaceSepToPosix('..\\1');
+      handle.mockRestore();
+      expect(r01).toEqual('../1');
+    });
+
+    it('starts with double dot - 2', () => {
       const handle = vitest.spyOn(gs, 'getSep').mockImplementationOnce(() => '\\');
       const r01 = replaceSepToPosix('..\\1\\2\\3\\4');
       handle.mockRestore();

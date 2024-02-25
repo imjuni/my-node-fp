@@ -8,6 +8,14 @@ export function replaceSepToPosix(targetPath: string): string {
     return targetPath;
   }
 
+  if (targetPath.trim() === '.') {
+    return targetPath.trim();
+  }
+
+  if (targetPath.trim() === '..') {
+    return targetPath.trim();
+  }
+
   if (sep !== path.posix.sep) {
     const replaced = path.posix.join(...targetPath.split(sep));
 
