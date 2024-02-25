@@ -15,6 +15,10 @@ export function replaceSepToPosix(targetPath: string): string {
       return `${path.posix.sep}${replaced}`;
     }
 
+    if (targetPath.startsWith('..') && !replaced.startsWith(sep)) {
+      return replaced;
+    }
+
     if (targetPath.startsWith('.') && !replaced.startsWith(sep)) {
       return ['.', replaced].join(path.posix.sep);
     }
