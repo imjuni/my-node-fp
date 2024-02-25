@@ -4,6 +4,10 @@ import path from 'node:path';
 export function replaceSepToWin32(targetPath: string): string {
   const sep = getSep();
 
+  if (targetPath === '') {
+    return targetPath;
+  }
+
   if (sep !== path.win32.sep) {
     const replaced = path.win32.join(...targetPath.split(sep));
 
