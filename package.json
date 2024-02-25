@@ -1,6 +1,6 @@
 {
   "name": "my-node-fp",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "Simple node programming utility",
   "scripts": {
     "test": "vitest --run --coverage",
