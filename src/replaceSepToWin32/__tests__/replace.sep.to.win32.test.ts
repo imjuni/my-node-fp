@@ -6,33 +6,37 @@ describe('replaceSepToWin32', () => {
   it('not changed directory', () => {
     const handle = vitest.spyOn(gs, 'getSep').mockImplementationOnce(() => '\\');
     const r01 = replaceSepToWin32('\\1\\2\\3\\4');
-    handle.mockReset();
+    handle.mockRestore();
 
     expect(r01).toEqual('\\1\\2\\3\\4');
   });
 
-  describe('win32', () => {
+  describe('posix', () => {
+    it('empty directory', () => {
+      const handle = vitest.spyOn(gs, 'getSep').mockImplementationOnce(() => '/');
+      const r01 = replaceSepToWin32('');
+      handle.mockRestore();
+      expect(r01).toEqual('');
+    });
+
     it('starts with slash', () => {
       const handle = vitest.spyOn(gs, 'getSep').mockImplementationOnce(() => '/');
       const r01 = replaceSepToWin32('/1/2/3/4');
-      handle.mockReset();
-
+      handle.mockRestore();
       expect(r01).toEqual('\\1\\2\\3\\4');
     });
 
     it('starts with dot', () => {
       const handle = vitest.spyOn(gs, 'getSep').mockImplementationOnce(() => '/');
       const r01 = replaceSepToWin32('./1/2/3/4');
-      handle.mockReset();
-
+      handle.mockRestore();
       expect(r01).toEqual('.\\1\\2\\3\\4');
     });
 
     it('starts with alphabets', () => {
       const handle = vitest.spyOn(gs, 'getSep').mockImplementationOnce(() => '/');
       const r01 = replaceSepToWin32('1/2/3/4');
-      handle.mockReset();
-
+      handle.mockRestore();
       expect(r01).toEqual('1\\2\\3\\4');
     });
   });
