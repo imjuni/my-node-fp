@@ -33,6 +33,13 @@ describe('replaceSepToPosix', () => {
       expect(r01).toEqual('./1/2/3/4');
     });
 
+    it('starts with double dot', () => {
+      const handle = vitest.spyOn(gs, 'getSep').mockImplementationOnce(() => '\\');
+      const r01 = replaceSepToPosix('..\\1\\2\\3\\4');
+      handle.mockRestore();
+      expect(r01).toEqual('../1/2/3/4');
+    });
+
     it('starts with alphabets', () => {
       const handle = vitest.spyOn(gs, 'getSep').mockImplementationOnce(() => '\\');
       const r01 = replaceSepToPosix('1\\2\\3\\4');
